@@ -1,0 +1,41 @@
+eureka:
+    instance:
+        instance-id: ${spring.application.name}:${random.uuid}
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+server:
+    port: 8183
+spring:
+    application:
+        name: inventory-service
+    cloud:
+        config:
+            uri: http://localhost:8888
+        vault:
+            application-name: inventory-service
+            authentication: TOKEN
+            host: localhost
+            port: 8200
+            scheme: http
+            token: ''
+    datasource:
+        password: mysql
+        username: root
+    rabbitmq:
+        host: localhost
+        password: guest
+        port: 5672
+        username: guest
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    issuer-uri: http://localhost:8180/auth/realms/microservices-realm
+    sleuth:
+        sampler:
+            probability: 1
+    zipkin:
+        base-url: http://localhost:9411/

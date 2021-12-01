@@ -1,0 +1,13 @@
+server:
+    port: 8888
+spring:
+    application:
+        name: configuration-server
+    cloud:
+        config:
+            server:
+                git:
+                    clone-on-start: true
+                    password: ''
+                    uri: https://github.com/adnanrahman1/ms-config-server.git
+                    username: ''
